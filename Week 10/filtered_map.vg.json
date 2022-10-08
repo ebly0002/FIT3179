@@ -1,0 +1,90 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 500, "height": 400,
+  "data": {"url": "https://raw.githubusercontent.com/ebly0002/FIT3179/main/data/globalterrorismdb_0718dist%20-%20Modified%20-%202017.csv"},
+  "title": "Terrorist Attacks in 2017",
+  "params": [
+    {
+      "name": "Attack_type_selection",
+      "bind": {
+        "input": "select",
+        "options": [
+          null,
+          "Armed Assault",
+          "Assassination",
+          "Bombing/Explosion",
+          "Facility/Infrastructure Attack",
+          "Hijacking",
+          "Hostage Taking (Barricade Incident)",
+          "Hostage Taking (Kidnapping)",
+          "Unarmed Assault",
+          "Unknown"
+        ],
+        "labels": [
+          "Show All",
+          "Armed Assault",
+          "Assassination",
+          "Bombing/Explosion",
+          "Facility/Infrastructure Attack",
+          "Hijacking",
+          "Hostage Taking (Barricade Incident)",
+          "Hostage Taking (Kidnapping)",
+          "Unarmed Assault",
+          "Unknown"
+        ],
+        "name": "Select Attack Type: "
+      }
+    }
+  ],
+  
+  "transform": [
+    {"filter": "Attack_type_selection == null || datum.attacktype1_txt == Attack_type_selection"},
+
+    {
+      "aggregate": [{
+        "op": "count",
+        "field": "iday",
+        "as": "Terrorist Attacks"
+      }],
+      "groupby": ["imonth"]
+    }
+  ],
+  "encoding": {
+    "x": {"field": "imonth", "type": "quantitative", "title": "Month"},
+    "y": {"field": "Terrorist Attacks", "type": "quantitative"},
+    "tooltip": [
+      {"field": "imonth", "type": "quantitative", "title": "Month"},
+      {"field": "Terrorist Attacks", "type": "quantitative", "title": "Terrorist attacks this month"}
+    ]
+  },
+  "layer": [{
+    "mark": "line"
+  },
+  {
+    "transform": [{
+      "window": [{"op": "rank", "as": "ranking"}],
+      "sort": [{"field": "Terrorist Attacks", "order": "descending"}]
+    },
+      {"filter": "datum.ranking == 1"},
+      {
+        "calculate": "'Highest number of terrorist; attacks of the selected type: ' + datum['Terrorist Attacks']",
+        "as": "text_annotation_raw"
+      },
+      {
+        "calculate": "split(datum.text_annotation_raw, ';')",
+        "as": "text_annotation"
+      }
+    ],
+
+    "mark": {
+      "type": "text",
+      "align": "right",
+      "dx": -8,
+      "dy": -8,
+      "baseline": "middle",
+      "fontStyle": "italic"
+    },
+    "encoding": {"text": {"field": "text_annotation"}}
+    }
+  ]
+}
