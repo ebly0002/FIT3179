@@ -67,7 +67,7 @@
     },
       {"filter": "datum.ranking == 1"},
       {
-        "calculate": "'Highest number of terrorist; attacks of the selected type: ' + datum['Terrorist Attacks']",
+        "calculate": "'Month with the highest number of; attacks of the selected type: ' + datum['Terrorist Attacks']",
         "as": "text_annotation_raw"
       },
       {
