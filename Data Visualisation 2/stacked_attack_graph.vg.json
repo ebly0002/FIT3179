@@ -2,7 +2,7 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "width": 500, "height": 400,
   "data": {"url": "https://raw.githubusercontent.com/ebly0002/FIT3179/main/data/globalterrorismdb_0718dist%20-%20Modified%20-%202017.csv"},
-  "title": "Terrorist Attacks in 2017",
+  "title": "Terrorist Attacks Types in 2017",
   "params": [
     {
       "name": "Attack_type_selection",
