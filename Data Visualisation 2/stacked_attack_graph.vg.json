@@ -1,0 +1,65 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 500, "height": 400,
+  "data": {"url": "https://raw.githubusercontent.com/ebly0002/FIT3179/main/data/globalterrorismdb_0718dist%20-%20Modified%20-%202017.csv"},
+  "title": "Terrorist Attacks in 2017",
+  "params": [
+    {
+      "name": "Attack_type_selection",
+      "bind": {
+        "input": "select",
+        "options": [
+          null,
+          "Armed Assault",
+          "Assassination",
+          "Bombing/Explosion",
+          "Facility/Infrastructure Attack",
+          "Hijacking",
+          "Hostage Taking (Barricade Incident)",
+          "Hostage Taking (Kidnapping)",
+          "Unarmed Assault",
+          "Unknown"
+        ],
+        "labels": [
+          "Show All",
+          "Armed Assault",
+          "Assassination",
+          "Bombing/Explosion",
+          "Facility/Infrastructure Attack",
+          "Hijacking",
+          "Hostage Taking (Barricade Incident)",
+          "Hostage Taking (Kidnapping)",
+          "Unarmed Assault",
+          "Unknown"
+        ],
+        "name": "Select Attack Type: "
+      }
+    }
+  ],
+
+  "transform": [
+    {"filter": "Attack_type_selection == null || datum.attacktype1_txt == Attack_type_selection"}
+  ],
+
+  "mark": "area",
+  "encoding": {
+    "x": {
+      "field": "imonth",
+      "type": "quantitative",
+      "title": "Month"
+    },
+    "y": {
+      "aggregate": "count", "field": "iday", "title": "Number of attacks"
+    },
+    "color": {
+      "field": "attacktype1_txt",
+      "scale": {"scheme": "viridis"},
+      "title": "Attack type"
+    },
+    "tooltip": [
+      {"field": "imonth", "type": "quantitative", "title": "Month"},
+      {"field": "attacktype1_txt", "type": "nominal", "title": "Attack type"},
+      {"field": "iday", "aggregate": "count", "type": "quantitative", "title": "Amount of attacks"}
+    ]
+  }
+}
