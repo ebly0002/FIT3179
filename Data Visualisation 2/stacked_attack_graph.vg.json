@@ -53,7 +53,7 @@
     },
     "color": {
       "field": "attacktype1_txt",
-      "scale": {"scheme": "viridis"},
+      "scale": {"scheme": "set1"},
       "title": "Attack type"
     },
     "tooltip": [
