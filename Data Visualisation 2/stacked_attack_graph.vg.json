@@ -59,7 +59,7 @@
     "tooltip": [
       {"field": "imonth", "type": "quantitative", "title": "Month"},
       {"field": "attacktype1_txt", "type": "nominal", "title": "Attack type"},
-      {"field": "iday", "aggregate": "count", "type": "quantitative", "title": "Amount of attacks"}
+      {"field": "iday", "aggregate": "count", "type": "quantitative", "title": "Number of attacks"}
     ]
   }
 }
