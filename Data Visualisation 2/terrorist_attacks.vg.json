@@ -65,8 +65,9 @@
                 {"field": "iyear", "type": "quantitative", "title": "Year"},
                 {"field": "imonth", "type": "quantitative", "title": "Month"},
                 {"field": "iday", "type": "quantitative", "title": "Day"},
-                {"field": "attacktype1_txt", "type": "nominal", "title": "Attack Type"},
-                {"field": "suicide_txt", "type": "nominal", "title": "Suicide?"}
+                {"field": "suicide_txt", "type": "nominal", "title": "Suicide?"},
+                {"field": "nkill", "type": "quantitative", "title": "Number of deaths"},
+                {"field": "attacktype1_txt", "type": "nominal", "title": "Attack Type"}
             ]
           }
         }
