@@ -51,7 +51,7 @@
     },
     "tooltip": [
       {"field": "suicide_txt", "type": "nominal", "title": "Suicide?"},
-      {"field": "iday", "aggregate": "count", "type": "quantitative", "title": "Amount of attacks"}
+      {"field": "iday", "aggregate": "count", "type": "quantitative", "title": "Number of attacks"}
     ]
   }
 }
