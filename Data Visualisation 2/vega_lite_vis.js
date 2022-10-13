@@ -12,3 +12,9 @@ var vg_3 = "suicide_rates.vg.json";
 vegaEmbed("#suicide_rates", vg_3).then(function(result) {
     // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
 }).catch(console.error);
+
+var vg_4 = "weapons.vg.json";
+vegaEmbed("#weapons", vg_4).then(function(result) {
+    // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+}).catch(console.error);
+
