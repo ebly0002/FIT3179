@@ -12,19 +12,53 @@
 
     <script src="vega_lite_vis.js"></script>
 
+    
+    <style>
+        h1 {text-align: center;}
+        .center {
+            margin: auto;
+        }
+    </style>
+
     <title>Data Visualisation 2</title>
+
 </head>
 
 <body>
-    <h1> </h1>
-    <div id="terrorist_attacks_map">
-    </div>
-    <div id="stacked_attack_graph">
-    </div>
-    <div id="suicide_rates">
-    </div>
-    <div id="weapons">
-    </div>
-    </body>
+    <h1> Terrorist Attacks in 2017 </h1>
 
+    <div id="terrorist_attacks_map" class = "center">
+    </div>
+
+    <p> General information about terrorist attacks and about the visualisation</p>
+
+    <div id="stacked_attack_graph" style="display:inline-block; margin:10px">
+    </div>
+
+    <div style="display:inline-block; margin:10px">
+        <h2> Attack Types</h2>
+        Information about attack types
+    </div>
+
+    <div style="display:inline-block; margin:10px">
+        <h2> Suicides </h2>
+        Information about suicides in terrorist attacks
+    </div>
+
+    <div id="suicide_rates" style="float: right; margin:10px">
+    </div>
+
+    <div id="weapons" style="display:inline-block; margin:10px">
+    </div>
+
+    <div style="display:inline-block; margin:10px">
+        <h2> Weapons </h2>
+        Information about weapons
+    </div>
+        
+
+    <div id = "unfinished_map">
+    </div>
+
+    </body>
 </html>
