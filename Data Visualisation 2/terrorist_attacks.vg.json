@@ -31,12 +31,7 @@
               "mark": {"type": "geoshape", "fill": null, "stroke": "lightgray"}
         },
 
-        {
-          "transform": [
-            
-            {"calculate": "datum.nkill", "as": "Deaths"}
-          ],
-          
+        { 
           "mark": {"type": "circle"},
           "encoding": {
             "longitude": {
@@ -48,16 +43,13 @@
               "type": "quantitative"
               },
             "color": {
-              "field": "suicide",
+              "field": "suicide_txt",
               "type": "nominal",
               "title": "Suicide?",
-              "scale": {"range": ["#377eb8", "#e41a1c"]},
-              "legend": {
-            "labelExpr": "datum.label == '0' ? 'No' : datum.label == '1' ? 'Yes' : 'Suicide'"
-          }
+              "scale": {"range": ["#377eb8", "#e41a1c"]}
             },
             "size": {
-              "field": "Deaths",
+              "field": "nkill",
               "type": "quantitative",
               "title": "Number of deaths"
             },
@@ -67,7 +59,8 @@
                 {"field": "iday", "type": "quantitative", "title": "Day"},
                 {"field": "suicide_txt", "type": "nominal", "title": "Suicide?"},
                 {"field": "nkill", "type": "quantitative", "title": "Number of deaths"},
-                {"field": "attacktype1_txt", "type": "nominal", "title": "Attack Type"}
+                {"field": "attacktype1_txt", "type": "nominal", "title": "Attack type"},
+                {"field": "weaptype1_txt", "type": "nominal", "title": "Weapons used"}
             ]
           }
         }
