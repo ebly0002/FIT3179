@@ -1,0 +1,92 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {
+        "url": "https://raw.githubusercontent.com/ebly0002/FIT3179/main/data/globalterrorismdb_0718dist%20-%20Modified%20-%202017.csv"
+      },
+  "vconcat": [
+    {
+      "width": 1000,
+      "height": 400,
+      "title": "Terrorist Attacks in 2017",
+      "projection": {"type": "equalEarth"},
+      "layer": [
+        {
+          "data": {
+            "url": "https://raw.githubusercontent.com/ebly0002/FIT3179/main/data/ne_110m_admin_0_countries.topojson",
+            "format": {"type": "topojson", "feature": "ne_110m_admin_0_countries"}
+        },
+          "mark": {"type": "geoshape", "fill": "lightgray", "stroke":
+    "white"}
+        },
+        {
+              "data": {
+                "url":
+                "https://raw.githubusercontent.com/ebly0002/FIT3179/main/data/oceans.topojson",
+                "format": {"type": "topojson", "feature": "oceans"}
+              },
+              "mark": {"type": "geoshape", "fill": "skyblue"}
+        },
+        {
+              "data": {
+                "url": "https://raw.githubusercontent.com/ebly0002/FIT3179/main/data/WorldMapWithGraticules.topojson",
+                "format": {"type": "topojson", "feature": "ne_110m_graticules_30"}
+              },
+              "mark": {"type": "geoshape", "fill": null, "stroke": "lightgray"}
+        },
+        { 
+          "transform": [{"filter": {"param": "time_brush"}}],
+          "mark": {"type": "circle"},
+          "encoding": {
+            "longitude": {
+              "field": "longitude",
+              "type": "quantitative"
+              },
+            "latitude": {
+              "field": "latitude",
+              "type": "quantitative"
+              },
+            "color": {
+              "field": "suicide_txt",
+              "type": "nominal",
+              "title": "Suicide?",
+              "scale": {"range": ["#377eb8", "#e41a1c"]}
+            },
+            "size": {
+              "field": "nkill",
+              "type": "quantitative",
+              "title": "Number of deaths"
+            },
+              "tooltip": [
+                {"field": "iyear", "type": "quantitative", "title": "Year"},
+                {"field": "imonth", "type": "quantitative", "title": "Month"},
+                {"field": "iday", "type": "quantitative", "title": "Day"},
+                {"field": "suicide_txt", "type": "nominal", "title": "Suicide?"},
+                {"field": "nkill", "type": "quantitative", "title": "Number of deaths"},
+                {"field": "attacktype1_txt", "type": "nominal", "title": "Attack type"},
+                {"field": "weaptype1_txt", "type": "nominal", "title": "Weapons used"}
+            ]
+          }
+        }
+      ]
+    },
+    
+    {
+      "width": 1000,
+      "height": 300,
+      "title": "Use this line chart to filter out the data based on time",
+      "mark": "line",
+      "params": [
+        {
+          "name": "time_brush",
+          "select": {"type": "interval", "encodings": ["x"]}
+        }
+      ],
+
+      "encoding": {
+        "x": {"field": "imonth", "type": "quantitative", "title": "Month"},
+        "y": {"field": "iday", "aggregate":"count", "title": ""}
+      }
+
+    }
+  ]
+}
