@@ -45,6 +45,7 @@
   "encoding": {
     "x": {"field": "iday", "aggregate": "count", "title": "Number of attacks"},
     "y": {"field": "weaptype1_txt", "title": "Weapons"},
+    "color": {"value": "#6a3d9a"},
     "tooltip": [
       {"field": "iday", "aggregate": "count", "type": "quantitative", "title": "Amount of attacks"},
       {"field": "weaptype1_txt", "title": "Weapons used:"}
