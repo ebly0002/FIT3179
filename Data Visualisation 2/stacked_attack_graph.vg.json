@@ -43,17 +43,22 @@
 
   "mark": "area",
   "encoding": {
-    "x": {
-      "field": "imonth",
-      "type": "quantitative",
-      "title": "Month"
-    },
-    "y": {
-      "aggregate": "count", "field": "iday", "title": "Number of attacks"
-    },
+    "x": {"field": "imonth", "type": "quantitative", "title": "Month"},
+    "y": {"aggregate": "count", "field": "iday", "title": "Number of attacks"},
     "color": {
       "field": "attacktype1_txt",
-      "scale": {"scheme": "set1"},
+      "scale": {
+        "domain": ["Armed Assault",
+        "Assassination",
+        "Bombing/Explosion",
+        "Facility/Infrastructure Attack",
+        "Hijacking",
+        "Hostage Taking (Barricade Incident)",
+        "Hostage Taking (Kidnapping)",
+        "Unarmed Assault",
+        "Unknown"],
+        "range": ["#8dd3c7","#ffffb3","#bebada","#fb8072","#80b1d3","#fdb462","#b3de69","#fccde5","#d9d9d9"]
+      },
       "title": "Attack type"
     },
     "tooltip": [
