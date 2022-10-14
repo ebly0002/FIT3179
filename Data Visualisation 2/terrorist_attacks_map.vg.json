@@ -34,7 +34,10 @@
               "mark": {"type": "geoshape", "fill": null, "stroke": "lightgray"}
         },
         { 
-          "transform": [{"filter": {"param": "time_brush"}}],
+          "transform": [
+            {"filter": {"param": "time_brush"}},
+            {"calculate": "toNumber(datum.nkill) + 0.1", "as": "Deaths"}
+          ],
           "mark": {"type": "circle"},
           "encoding": {
             "longitude": {
@@ -52,18 +55,24 @@
               "scale": {"range": ["#377eb8", "#e41a1c"]}
             },
             "size": {
-              "field": "nkill",
+              "field": "Deaths",
               "type": "quantitative",
-              "title": "Number of deaths"
+              "title": "Number of deaths",
+              "scale": {
+                "domain": [0, 500]
+              }
             },
               "tooltip": [
                 {"field": "iyear", "type": "quantitative", "title": "Year"},
                 {"field": "imonth", "type": "quantitative", "title": "Month"},
                 {"field": "iday", "type": "quantitative", "title": "Day"},
+                {"field": "country_txt", "type": "nominal", "title": "Country"},
                 {"field": "suicide_txt", "type": "nominal", "title": "Suicide?"},
                 {"field": "nkill", "type": "quantitative", "title": "Number of deaths"},
                 {"field": "attacktype1_txt", "type": "nominal", "title": "Attack type"},
-                {"field": "weaptype1_txt", "type": "nominal", "title": "Weapons used"}
+                {"field": "weaptype1_txt", "type": "nominal", "title": "Weapons used"},
+                {"field": "latitude"},
+                {"field": "longitude"}   
             ]
           }
         }
@@ -83,10 +92,11 @@
       ],
 
       "encoding": {
-        "x": {"field": "imonth", "type": "quantitative", "title": "Month"},
-        "y": {"field": "iday", "aggregate":"count", "title": ""}
+        "x": {"field": "imonth", "type": "quantitative","title": "Month"},
+        "y": {"field": "iday", "aggregate":"count", "title": "", "scale": {
+          "domain": [0, 1200]
+        }}
       }
-
     }
   ]
 }
