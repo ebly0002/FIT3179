@@ -1,6 +1,8 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "width": 500, "height": 400,
+  "width": "container", "height": 400,
+  "config": {"view": {"stroke": "transparent"}},
+  "background": "transparent",
   "data": {"url": "https://raw.githubusercontent.com/ebly0002/FIT3179/main/data/globalterrorismdb_0718dist%20-%20Modified%20-%202017.csv"},
   "title": "Suicide Rates of Terrorist Attacks in 2017",
   "params": [
@@ -38,15 +40,42 @@
   ],
 
   "transform": [
-    {"filter": "Attack_type_selection == null || datum.attacktype1_txt == Attack_type_selection"}
+    {"filter": "Attack_type_selection == null || datum.attacktype1_txt == Attack_type_selection"},
+
+    {"window": [{
+      "op": "count",
+      "field": "iday",
+      "as": "num_attacks"
+    }],
+      "frame": [null, null]
+    },
+
+    {"joinaggregate": [{
+      "op": "sum",
+      "field": "suicide",
+      "as": "suicide_yes_count"
+    }]},
+
+    {"calculate": "datum.suicide_yes_count/datum.num_attacks * 100", "as": "suicide_percent"},
+
+
+    {
+      "calculate": "datum['suicide_percent'] + '%; of the attacks of the; selected type have resulted; in suicides ' ",
+      "as": "suicide_percent_label_raw"},
+      {
+        "calculate": "split(datum.suicide_percent_label_raw, ';')",
+        "as": "suicide_percent_label"
+      }
   ],
 
-  "mark": "arc",
   "encoding": {
     "theta": {"field": "suicide_txt", "aggregate": "count"},
     "color": {
       "field": "suicide_txt",
-      "scale": {"scheme": "set1"},
+      "scale": {
+        "domain": ["No", "Yes"],
+        "range": ["#377eb8", "#e41a1c"]
+      },
       "title": "Suicide?",
       "sort": "descending"
     },
@@ -54,5 +83,21 @@
       {"field": "suicide_txt", "type": "nominal", "title": "Suicide?"},
       {"field": "iday", "aggregate": "count", "type": "quantitative", "title": "Amount of attacks"}
     ]
+  },
+  "layer": [
+    {"mark": "arc"},
+    {"mark": {
+      "type": "text",
+      "align":"left",
+      "baseline": "middle",
+      "dx": -400,
+      "dy": -180,
+      "fontSize": 17
+    },
+    "encoding": {
+      "text": {"field": "suicide_percent_label"},
+      "color": {"value": "#e41a1c"}
+    }
   }
+]
 }
