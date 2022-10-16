@@ -1,11 +1,13 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "background": "transparent",
+  "config": {"view": {"stroke": "transparent"}},
   "data": {
         "url": "https://raw.githubusercontent.com/ebly0002/FIT3179/main/data/globalterrorismdb_0718dist%20-%20Modified%20-%202017.csv"
       },
   "vconcat": [
     {
-      "width": 1000,
+      "width": "container",
       "height": 400,
       "title": "Terrorist Attacks in 2017",
       "projection": {"type": "equalEarth"},
@@ -63,16 +65,15 @@
               }
             },
               "tooltip": [
-                {"field": "iyear", "type": "quantitative", "title": "Year"},
-                {"field": "imonth", "type": "quantitative", "title": "Month"},
                 {"field": "iday", "type": "quantitative", "title": "Day"},
+                {"field": "imonth", "type": "quantitative", "title": "Month"},
+                {"field": "iyear", "type": "quantitative", "title": "Year"},
                 {"field": "country_txt", "type": "nominal", "title": "Country"},
-                {"field": "suicide_txt", "type": "nominal", "title": "Suicide?"},
                 {"field": "nkill", "type": "quantitative", "title": "Number of deaths"},
                 {"field": "attacktype1_txt", "type": "nominal", "title": "Attack type"},
                 {"field": "weaptype1_txt", "type": "nominal", "title": "Weapons used"},
-                {"field": "latitude"},
-                {"field": "longitude"}   
+                {"field": "targtype1_txt", "type": "nominal", "title": "Target"},
+                {"field": "suicide_txt", "type": "nominal", "title": "Suicide?"}  
             ]
           }
         }
@@ -80,7 +81,7 @@
     },
     
     {
-      "width": 1000,
+      "width": "container",
       "height": 150,
       "title": "Use this line chart to filter out the data based on time",
       "mark": "line",
@@ -92,10 +93,11 @@
       ],
 
       "encoding": {
-        "x": {"field": "imonth", "type": "quantitative","title": "Month"},
+        "x": {"field": "imonth", "type": "quantitative","title": "Month", "axis": {"grid": false, "ticks": false}},
         "y": {"field": "iday", "aggregate":"count", "title": "", "scale": {
           "domain": [0, 1200]
-        }}
+        }, "axis": {"grid": false, "ticks": false}},
+        "color": {"value": "#000000"}
       }
     }
   ]
