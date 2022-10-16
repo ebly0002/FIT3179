@@ -1,0 +1,73 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "width": "container", "height": 375,
+    "config": {"view": {"stroke": "transparent"}},
+    "background": "transparent",
+    "data": {"url": "https://raw.githubusercontent.com/ebly0002/FIT3179/main/data/globalterrorismdb_0718dist%20-%20Modified%20-%202017.csv"},
+    "title": "Targets of Terrorist Attacks in 2017",
+    "params": [
+      {
+        "name": "Attack_type_selection",
+        "bind": {
+          "input": "select",
+          "options": [
+            null,
+            "Armed Assault",
+            "Assassination",
+            "Bombing/Explosion",
+            "Facility/Infrastructure Attack",
+            "Hijacking",
+            "Hostage Taking (Barricade Incident)",
+            "Hostage Taking (Kidnapping)",
+            "Unarmed Assault",
+            "Unknown"
+          ],
+          "labels": [
+            "Show All",
+            "Armed Assault",
+            "Assassination",
+            "Bombing/Explosion",
+            "Facility/Infrastructure Attack",
+            "Hijacking",
+            "Hostage Taking (Barricade Incident)",
+            "Hostage Taking (Kidnapping)",
+            "Unarmed Assault",
+            "Unknown"
+          ],
+          "name": "Select Attack Type: "
+        }
+      }
+    ],
+    
+    "transform": [
+      {"filter": "Attack_type_selection == null || datum.attacktype1_txt == Attack_type_selection"}
+    ],
+    "encoding": {
+      "x": {"field": "iday", "aggregate": "count", "title": "Number of attacks", "axis": {
+        "gridColor": "#4a4a4a" 
+      }},
+      "y": {"field": "targtype1_txt", "title": "Targets", "axis": {
+         "gridColor": "#4a4a4a"
+      }},
+      "color": {"value": "#0000ff"},
+      "tooltip": [
+        {"field": "targtype1_txt", "type": "nominal", "title": "Target"},
+        {"field": "iday", "aggregate": "count", "type": "quantitative", "title": "Amount of attacks"}
+      ]
+    },
+    "layer": [{
+      "mark": "bar"
+    }, {
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "baseline": "middle",
+        "dx": 8
+      },
+      "encoding": {
+        "text": {"field": "iday", "aggregate": "count"},
+        "color": {"value": "black"}
+      }
+    }]
+  }
+  
