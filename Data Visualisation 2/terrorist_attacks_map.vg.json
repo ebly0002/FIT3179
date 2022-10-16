@@ -54,7 +54,10 @@
               "field": "suicide_txt",
               "type": "nominal",
               "title": "Suicide?",
-              "scale": {"range": ["#377eb8", "#e41a1c"]}
+              "scale": {"range": ["#377eb8", "#e41a1c"]},
+              "legend": {
+                "orient": "top-left"
+              }
             },
             "size": {
               "field": "Deaths",
@@ -62,6 +65,9 @@
               "title": "Number of deaths",
               "scale": {
                 "domain": [0, 500]
+              },
+              "legend": {
+                "orient": "top-left"
               }
             },
               "tooltip": [
