@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.17.0"></script>
+
+    <script src="vega_lite_vis.js"></script>
+
+    
+    <style>
+        h1 {text-align: center;}
+        .center {
+            margin: auto;
+        }
+
+        .column {
+            float: left;
+            padding: 10px;
+        }
+
+        .left, .right {
+            width: 45%;
+        }
+
+        .middle {
+            width: 10%;
+        }
+
+        /* Clear floats after the columns */
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+    </style>
+
+    <title>Data Visualisation 2</title>
+
+</head>
+
+<body>
+    <h1> Terrorist Attacks in 2017 </h1>
+
+    <div id="terrorist_attacks_map" class = "center">
+    </div>
+
+    <p> General information about terrorist attacks and about the visualisation</p>
+
+    
+    <h2> Attack types </h2>
+    <div class="row">
+        <div id="stacked_attack_graph" class="column left">
+        </div>
+
+        <div class="column middle"></div>
+
+        <div class="column right">
+            Information about attack types
+        </div>
+    </div>
+
+    <div class="row left">
+        <div class="column">
+            <h2> Suicides </h2>
+            Information about suicides in terrorist attacks
+        </div>
+
+        <div class="column middle"></div>
+
+        <div id="suicide_rates" class="column right">
+        </div>
+    </div>
+
+    <div class="row left">
+        <div id="weapons" class="column" style="background-color:rgb(106, 61, 154, .3);padding:25px;outline: 10px;">
+        </div>
+
+        <div class="column middle">
+            <h3>Test text</h3>
+        </div>
+
+        <div class="column right">
+            <h2> Weapons </h2>
+            Information about weapons
+        </div>
+    </div>
+
+    </body>
+</html>

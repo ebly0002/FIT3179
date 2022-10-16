@@ -8,7 +8,7 @@
   "vconcat": [
     {
       "width": "container",
-      "height": 400,
+      "height": 600,
       "title": "Terrorist Attacks in 2017",
       "projection": {"type": "equalEarth"},
       "layer": [
