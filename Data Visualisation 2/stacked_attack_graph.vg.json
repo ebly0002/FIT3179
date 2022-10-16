@@ -1,6 +1,8 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "width": 500, "height": 400,
+  "width": "container", "height": 375,
+  "config": {"view": {"stroke": "transparent"}},
+  "background": "transparent",
   "data": {"url": "https://raw.githubusercontent.com/ebly0002/FIT3179/main/data/globalterrorismdb_0718dist%20-%20Modified%20-%202017.csv"},
   "title": "Terrorist Attacks Types in 2017",
   "params": [
@@ -43,21 +45,27 @@
 
   "mark": "area",
   "encoding": {
-    "x": {"field": "imonth", "type": "quantitative", "title": "Month"},
-    "y": {"aggregate": "count", "field": "iday", "title": "Number of attacks"},
+    "x": {"field": "imonth", "type": "quantitative", "title": "Month", "axis": {
+      "gridColor": "#4a4a4a" 
+    }},
+    "y": {"aggregate": "count", "field": "iday", "title": "Number of attacks", "axis": {
+      "gridColor": "#4a4a4a" 
+    }},
     "color": {
       "field": "attacktype1_txt",
       "scale": {
-        "domain": ["Armed Assault",
-        "Assassination",
-        "Bombing/Explosion",
-        "Facility/Infrastructure Attack",
-        "Hijacking",
-        "Hostage Taking (Barricade Incident)",
-        "Hostage Taking (Kidnapping)",
-        "Unarmed Assault",
-        "Unknown"],
-        "range": ["#8dd3c7","#ffffb3","#bebada","#fb8072","#80b1d3","#fdb462","#b3de69","#fccde5","#d9d9d9"]
+        "domain": [
+          "Armed Assault",
+          "Assassination",
+          "Bombing/Explosion",
+          "Facility/Infrastructure Attack",
+          "Hijacking",
+          "Hostage Taking (Barricade Incident)",
+          "Hostage Taking (Kidnapping)",
+          "Unarmed Assault",
+          "Unknown"
+        ],
+        "range": ["#8dd3c7","#ffffb3","#cab2d6","#fb8072","#80b1d3","#fdb462","#33a02c","#f781bf","#949494"]
       },
       "title": "Attack type"
     },
