@@ -18,12 +18,17 @@ vegaEmbed("#weapons", vg_4).then(function(result) {
     // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
 }).catch(console.error);
 
-var vg_5 = "choropleth_test.vg.json";
-vegaEmbed("#choropleth_map", vg_5).then(function(result) {
+var vg_5 = "targets.vg.json";
+vegaEmbed("#targets", vg_5).then(function(result) {
     // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
 }).catch(console.error);
 
-var vg_6 = "choropleth_test2.vg.json";
-vegaEmbed("#choropleth_map2", vg_6).then(function(result) {
+var vg_6 = "choropleth_test.vg.json";
+vegaEmbed("#choropleth_map", vg_6).then(function(result) {
+    // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+}).catch(console.error);
+
+var vg_7 = "choropleth_test2.vg.json";
+vegaEmbed("#choropleth_map2", vg_7).then(function(result) {
     // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
 }).catch(console.error);
