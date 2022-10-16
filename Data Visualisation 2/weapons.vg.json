@@ -1,6 +1,8 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "width": 500, "height": 400,
+  "width": "container", "height": 375,
+  "config": {"view": {"stroke": "transparent"}},
+  "background": "transparent",
   "data": {"url": "https://raw.githubusercontent.com/ebly0002/FIT3179/main/data/globalterrorismdb_0718dist%20-%20Modified%20-%202017.csv"},
   "title": "Weapons Used in Terrorist Attacks in 2017",
   "params": [
@@ -36,19 +38,35 @@
       }
     }
   ],
-
+  
   "transform": [
     {"filter": "Attack_type_selection == null || datum.attacktype1_txt == Attack_type_selection"}
   ],
-
-  "mark": "bar",
   "encoding": {
-    "x": {"field": "iday", "aggregate": "count", "title": "Number of attacks"},
-    "y": {"field": "weaptype1_txt", "title": "Weapons"},
-    "color": {"value": "#6a3d9a"},
+    "x": {"field": "iday", "aggregate": "count", "title": "Number of attacks", "axis": {
+      "gridColor": "#4a4a4a" 
+    }},
+    "y": {"field": "weaptype1_txt", "title": "Weapons", "axis": {
+       "gridColor": "#4a4a4a"
+    }},
+    "color": {"value": "#0000ff"},
     "tooltip": [
-      {"field": "iday", "aggregate": "count", "type": "quantitative", "title": "Amount of attacks"},
-      {"field": "weaptype1_txt", "title": "Weapons used:"}
+      {"field": "weaptype1_txt", "title": "Weapons used:"},
+      {"field": "iday", "aggregate": "count", "type": "quantitative", "title": "Amount of attacks"}
     ]
-  }
+  },
+  "layer": [{
+    "mark": "bar"
+  }, {
+    "mark": {
+      "type": "text",
+      "align": "left",
+      "baseline": "middle",
+      "dx": 8
+    },
+    "encoding": {
+      "text": {"field": "iday", "aggregate": "count"},
+      "color": {"value": "black"}
+    }
+  }]
 }
