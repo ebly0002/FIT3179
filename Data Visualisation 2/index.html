@@ -11,50 +11,214 @@
     <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.17.0"></script>
 
     <script src="vega_lite_vis.js"></script>
-
-    
     <style>
-        h1 {text-align: center;}
+        h1 {
+            text-align: center;
+            font-size: 70px;
+        }
+
+        h2 {font-size:xx-large;}
+
+        p {
+            font-size: 25px;
+        }
+
+        * {
+        box-sizing: border-box;
+        }
+
+        /* Centering a div */
         .center {
             margin: auto;
+            padding: 10px;
         }
+
+
+        /* Three column divs with differing widths*/
+        .column {
+            float: left;
+            padding: 10px;
+        }
+
+        .left, .right {
+            border-radius: 25px;
+            padding: 20px; 
+            width: 200px;
+            height: 500px; 
+            width: 49%;
+            background-color: rgb(0, 0, 255, .07);
+        }
+
+        .middle {
+            width: 2%;
+        }
+
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        /* Header div with rounded corners */
+        .headers {
+            border-radius: 25px;
+            padding: 20px;
+            background-color: rgba(0, 0, 255, 0.2); 
+        }
+
+        /* Text div with rounded corners */
+        .text {
+            border-radius: 25px;
+            padding: 20px;
+            background-color: rgb(0, 0, 255, .05); 
+        }
+
     </style>
 
-    <title>Data Visualisation 2</title>
+    <title> Data Visualisation 2 </title>
 
 </head>
 
-<body>
-    <h1> Terrorist Attacks in 2017 </h1>
+<body style="background-color: #e6e6e6";>
 
-    <div id="terrorist_attacks_map" class = "center">
+    <h1 class="headers"> Terrorist Attacks in 2017 </h1>
+
+    <!-- Overview -->
+    <p class = "text">
+        This visualisation is meant to give a general overview of terrorist attacks in 2017.
+        It focuses on the types of terrorist attacks, the weapons used in the attacks, the targets of the attacks and the suicide rates of the attacks.
+    </p>
+
+    <!-- Map -->
+    <div id="terrorist_attacks_map" class="text" style="width:100%">
     </div>
 
-    <p> General information about terrorist attacks and about the visualisation</p>
+    <p class = "text">
+        The map above displays all the terrorist attacks in 2017 by their latitude and longitude.
+        It is meant as an overview of the general attacks occur and where they are most concentrated.
+        As can be seen, most attacks are concentrated in three locations, Central Africa, the Middle East and South Asia.
+        The colour of each dot represents whether it was a suicide attack, meaning whether the perpertrator(s) died by their own hand.
+        <span style="color: #377eb8"><b>Blue</b></span> means it was not a suicide, whereas <span style="color: #e41a1c"><b>red</b></span> means it was.
+        The size of the each dot represents the number of deaths due to the attack.
+        As can be seen, most attacks results in minimal deaths, with a few outliers, such as the attack with the highest death total of 588.
+    </p>
 
-    <div id="stacked_attack_graph" style="display:inline-block; margin:10px">
+
+    <!-- Attack types -->
+    <h2 class = "headers"> Attack types </h2>
+    <div class="row">
+        <div id="stacked_attack_graph" class="column left">
+        </div>
+
+        <div class="column middle">
+        </div>
+
+        <div class="column right" >
+            <p>
+                The following graph shows the terrorist attacks per month separated by the type of the attack per month.
+                <br>
+                By far the most prevalent attack type is <span style="color: #cab2d6"><b>Bombing/Explosion</b></span>.
+                <br>
+                Whereas the least prevalent attack type is <span style="color: #80b1d3"><b>Hijacking</b></span>.
+                <br>
+                The month with the most terrorist attacks is May, with almost 1100 attacks.
+                <br>
+                Whereas the month with the least is December, with around 750 attacks.
+            </p>
+        </div>
     </div>
 
-    <div style="display:inline-block; margin:10px">
-        <h2> Attack Types</h2>
-        Information about attack types
+    <!-- Weapons -->
+    <h2 class = "headers"> Weapons </h2>
+    
+    <div class="row">
+        <div class="column left">
+            <p>
+                The following graph shows the types of weapons used in terrorist attacks, with a total of 5465 attacks.
+                <br>
+                This shows that Explosives are the most common weapon for terrorist attacks.
+                Although this could be caused by the fact that Explosives are the most common weapon by far in <span style="color: #cab2d6"><b>Bombing/Explosion</b></span> attacks, the most common attack type.
+                <br>
+                This is followed by Firearms, with a total of 3145 attacks, due their versatility, as they appear in all attack types except <span style="color: #f781bf"><b>Unarmed Assault</b></span>, <span style="color: #cab2d6"><b>Bombing/Explosion</b></span> and <span style="color: #949494"><b>Unknown</b></span>.
+                <br>
+                The least common weapon is Fake Weapons which appeared in a single <span style="color: #33a02c"><b>Hostage Taking (Kidnapping)</b></span> attack.
+                <br>
+                The next least common is Sabotage Equipment, which appeared solely in <span style="color: #fb8072"><b>Facility/Infrastructure Attack</b></span> attacks.
+            </p>
+        </div>
+
+        <div class="column middle">
+        </div>
+
+        <div id="weapons" class="column right">
+        </div>
     </div>
 
-    <div style="display:inline-block; margin:10px">
-        <h2> Suicides </h2>
-        Information about suicides in terrorist attacks
+    <!-- Targets -->
+    <h2 class = "headers"> Targets </h2>
+
+    <div class="row">
+        <div id="targets" class="column left">
+        </div>
+
+        <div class="column middle">
+        </div>
+
+        <div class="column right">
+            <p>
+                The following graph shows the targets of terrorist attacks.
+                <br>
+                This shows that Private Citizens & Property is the most common target for attacks, with a total of 2945 attacks.
+                This is because it is at least the second most common target in every attack type.
+                <br>
+                The second most common target is Military, with a total of 2352 attacks.
+                This is because it is the most common target in <span style="color: #8dd3c7"><b>Armed Assault</b></span> and <span style="color: #949494"><b>Unknown</b></span> and the second most common target in <span style="color: #cab2d6"><b>Bombing/Explosion</b></span>.
+                <br>
+                The least common target is Abortion Related, appearing in only one <span style="color: #cab2d6"><b>Bombing/Explosion</b></span> attack.
+                <br>
+                The next least common target is Other, with only 7 attacks.
+            </p>
+        </div> 
     </div>
 
-    <div id="suicide_rates" style="float: right; margin:10px">
+
+    <!-- Suicides -->
+    <h2 class = "headers"> Suicides </h2>
+    <div class="row">
+        <div class="column left">
+            <p>
+                The following chart shows the rate of terrorist attacks that end in suicide.
+                This is when the perpertrator(s) died by their own hand. 
+                <br>
+                <span style="color: #377eb8"><b>Blue</b></span> means it was not a suicide, whereas <span style="color: #e41a1c"><b>red</b></span> means it was.
+                As can be seen, very few attack actually resulted in a suicide, with only 844 attacks from the total of 10897 attacks, making around 8% of the total attacks.
+                <br>
+                In fact, for most attack types less than 10% of attacks result in a suicide.
+                <br>
+                In fact, a few types have no suicides associated with them, those being <span style="color: #fb8072"><b>Facility/Infrastructure Attack</b></span>, <span style="color: #80b1d3"><b>Hijacking</b></span> and <span style="color: #949494"><b>Unknown</b></span>.
+                <br>
+                The major exception is <span style="color: #cab2d6"><b>Bombing/Explosion</b></span> attacks, which has the highest suicide rate of nearly 16%.
+            </p>
+        </div>
+
+        <div class="column middle">
+        </div>
+
+        <div id="suicide_rates" class="column right">
+        </div>  
     </div>
 
-    <div id="weapons" style="display:inline-block; margin:10px">
-    </div>
 
-    <div style="display:inline-block; margin:10px">
-        <h2> Weapons </h2>
-        Information about weapons
-    </div>
 
-    </body>
+
+    <!-- Source -->
+    <p class = "text" style="font-size: 14px;text-align: right;">
+        <i>
+            This visualisation was created by Eric Blyth using data from the Global Terrorism Database, maintained by the National Consortium for the Study of Terrorism and Responses to Terrorism (START) for FIT3179.
+            <br>
+            Source: <a href="https://www.kaggle.com/datasets/START-UMD/gtd">https://www.kaggle.com/datasets/START-UMD/gtd</a>
+        </i>
+    </p>
+
+</body>
 </html>
