@@ -60,7 +60,7 @@
 
 
     {
-      "calculate": "datum['suicide_percent'] + '%; of the attacks of the; selected type have resulted; in suicides ' ",
+      "calculate": "datum['suicide_percent'] + '%; of the attacks of the; selected type have; resulted in suicides ' ",
       "as": "suicide_percent_label_raw"},
       {
         "calculate": "split(datum.suicide_percent_label_raw, ';')",
@@ -90,8 +90,8 @@
       "type": "text",
       "align":"left",
       "baseline": "middle",
-      "dx": -400,
-      "dy": -180,
+      "dx": 250,
+      "dy": 100,
       "fontSize": 17
     },
     "encoding": {
